@@ -39,3 +39,25 @@ minikube start
   778  kubectl get po
   779  history 
 ```
+```
+akash@sky:~$ kubectl run akpod --image httpd --port 80 
+pod/akpod created
+akash@sky:~$ kubectl get pod
+NAME    READY   STATUS    RESTARTS   AGE
+akpod   1/1     Running   0          9s
+akash@sky:~$ kubectl get pod -o wide
+NAME    READY   STATUS    RESTARTS   AGE     IP               NODE       NOMINATED NODE   READINESS GATES
+akpod   1/1     Running   0          2m33s   10.244.120.111   minikube   <none>           <none>
+akash@sky:~$ kubectl describe pod akpod
+Name:             akpod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 19 Jul 2023 22:29:16 +0530
+Labels:           run=akpod
+Annotations:      cni.projectcalico.org/containerID: 86f0b8fa0479ee089e92ae8a4d602f4c4c326ded459e943ee4cffa924022d18e
+                  cni.projectcalico.org/podIP: 10.244.120.111/32
+                  cni.projectcalico.org/podIPs: 10.244.120.111/32
+Status:           Running
+```
